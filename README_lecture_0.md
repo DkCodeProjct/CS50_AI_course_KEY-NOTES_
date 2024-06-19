@@ -29,33 +29,27 @@ In this course, we will explore some of the ideas that make AI possible:
 
 - **Language**
   - Processing natural language, which is produced and understood by humans.
+# SEARCH
+- Agent:
+    * in maze solve the algorithm would be an agent, try to find the path from a to be taking actions 
 
-## Search Problems
+- State:
+    * numbers that orderd in 15 Puzzle board is an state,
+    - initial state:
+        * in maze the point A or starting point would be an innitial state 
+- Action:
+    * in 15 puzzle the you can slide squres left right etc, in given state this would be an action ,,,
+    { 
+        - Action(S) - // get state[s] as input and returns as output the set of actions that can be excuted in state[s]
+    }
 
-Search problems involve an agent that is given an initial state and a goal state, and it returns a solution of how to get from the former to the latter. A navigator app uses a typical search process, where the agent (the thinking part of the program) receives as input your current location and your desired destination, and, based on a search algorithm, returns a suggested path. However, there are many other forms of search problems, like puzzles or mazes.
+- Transitional Model:
+    * in 15 puzzle you slide squres or Take Action(s) in one state or squre, and the result or taking these actions or sliding squres Can Be An [Transitional Model].
 
-### Components of Search Problems
+    {
+        - Result(s, a) - // recive state[s] and action[a] as inputs and returns the [state] resulting from performing action[a] in state[s]
+    }
 
-- **Agent**
-  - An entity that perceives its environment and acts upon that environment. In a navigator app, for example, the agent would be a representation of a car that needs to decide on which actions to take to arrive at the destination.
-
-- **State**
-  - A configuration of an agent in its environment. For example, in a 15 puzzle, a state is any one way that all the numbers are arranged on the board.
-
-- **Initial State**
-  - The state from which the search algorithm starts. In a navigator app, that would be the current location.
-
-- **Actions**
-  - Choices that can be made in a state. More precisely, actions can be defined as a function. Upon receiving state `s` as input, `Actions(s)` returns as output the set of actions that can be executed in state `s`. For example, in a 15 puzzle, the actions of a given state are the ways you can slide squares in the current configuration (4 if the empty square is in the middle, 3 if next to a side, 2 if in the corner).
-
-- **Transition Model**
-  - A description of what state results from performing any applicable action in any state. More precisely, the transition model can be defined as a function. Upon receiving state `s` and action `a` as input, `Results(s, a)` returns the state resulting from performing action `a` in state `s`. For example, given a certain configuration of a 15 puzzle (state `s`), moving a square in any direction (action `a`) will bring to a new configuration of the puzzle (the new state).
-
-- **State Space**
-  - The set of all states reachable from the initial state by any sequence of actions. For example, in a 15 puzzle, the state space consists of all the 16!/2 configurations on the board that can be reached from any initial state. The state space can be visualized as a directed graph with states, represented as nodes, and actions, represented as arrows between nodes.
-
-- **Goal Test**
-  - The condition that determines whether a given state is a goal state. For example, in a navigator app, the goal test would be whether the current location of the agent (the representation of the car) is at the destination. If it is — problem solved. If it’s not — we continue searching.
-
-- **Path Cost**
-  - A numerical cost associated with a given path. For example, a navigator app does not simply bring you to your goal; it does so while minimizing the path cost, finding the fastest way possible for you to get to your goal state.
+- State Space:
+    *  in a 15 puzzle, the state space consists of all the 16!/2 configurations on the board that can be reached from any initial state. 
+![alt text](image.png)
