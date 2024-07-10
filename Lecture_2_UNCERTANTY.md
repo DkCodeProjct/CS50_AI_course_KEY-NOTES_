@@ -4,7 +4,8 @@
    * Uncertainty can be represented as a number of events and the likelihood, or probability, of each of them happening.
 
 + The probabilities of every possible event, when summed together, are equal to 1.
-![alt text](/home/code/Downloads/lotp.png)
+![lotp](https://github.com/DkCodeProjct/CS50_AI_course_KEY-NOTES_/assets/148317495/adb56a5d-d576-4806-ae48-7b9a80f49d7a)
+
 
 ### Axioms in Probability
 
@@ -29,7 +30,8 @@
 
 
 + Mathematically, to compute the conditional probability of a given b, we use the following formula:
-![alt text](conditional.png)
+![conditional](https://github.com/DkCodeProjct/CS50_AI_course_KEY-NOTES_/assets/148317495/9dae9ddf-59b1-434a-92b5-9b93c984c696)
+
 
    * To put it in words, the probability that a given b is true is equal to the probability of a and b being true, divided by the probability of b. An intuitive way of reasoning about this is the thought “we are interested in the events where both a and b are true (the numerator), but only from the worlds where we know b to be true (the denominator).” Dividing by b restricts the possible worlds to the ones where b is true. The following are algebraically equivalent forms to the formula above:
 
@@ -64,9 +66,9 @@
 
 # Bayes’ Rule
    
-   * Bayes’ rule is commonly used in probability theory to compute conditional probability. In words, Bayes’ rule says that the probability of b given a is equal to the probability of a given b, times the probability of b, divided by the probability of a.
+   * Bayes’ rule is commonly used in probability theory to compute conditional probability. In words, Bayes’ rule says that the probability of b given a is equal to the probability of a given b, times the probability ![bayesrule](https://github.com/DkCodeProjct/CS50_AI_course_KEY-NOTES_/assets/148317495/426edbab-4e7d-4379-8544-eb5d52952aef)
+of b, divided by the probability of a.
 
-   ![alt text](bayesrule.png)
 
    * For example, we would like to`` compute the probability of it raining in the afternoon if there are clouds in the morning, or P(rain | clouds)``. We start with the following information:
 
