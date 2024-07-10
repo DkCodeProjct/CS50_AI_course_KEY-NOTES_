@@ -4,7 +4,7 @@
    * Uncertainty can be represented as a number of events and the likelihood, or probability, of each of them happening.
 
 + The probabilities of every possible event, when summed together, are equal to 1.
-![alt text](lotp.png)
+![alt text](/home/code/Downloads/lotp.png)
 
 ### Axioms in Probability
 
