@@ -177,10 +177,10 @@
    * `P(a) = P(a, b) + P(a, ¬b)`. The idea here is that b and ¬b are disjoint probabilities. That is, the probability of b and ¬b occurring at the same time is 0. We also know b and ¬b sum up to 1. 
    Thus, when a happens, b can either happen or not. When we take the probability of both a and b happening in addition to the probability of a and ¬b, we end up with simply the probability of a.
   
-  
-+ Marginalization can be expressed for random variables the following way:
-![alt text](file:///home/code/Downloads/marginalization.png)
+ 
 
++ Marginalization can be expressed for random variables the following way:
++ ![marginalization](https://github.com/user-attachments/assets/2bf9f86a-3e0b-48b8-bd4d-d9576de04d0c)
   * The left side of the equation means `“The probability of random variable X having the value xᵢ.”` For example, for the variable C we mentioned earlier, the two possible values are clouds in the morning and no clouds in the morning.` The right part of the equation is the idea of marginalization. P(X = xᵢ) is equal to the sum of all the joint probabilities of xᵢ and every single value of the random variable Y.` For example,` P(C = cloud) = P(C = cloud, R = rain) + P(C = cloud, R = ¬rain) = 0.08 + 0.32 = 0.4.`
 
 ## Conditioning: 
