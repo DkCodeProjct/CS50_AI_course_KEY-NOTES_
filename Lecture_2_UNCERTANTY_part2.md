@@ -185,3 +185,47 @@
 
 ## Conditioning: 
   *` P(a) = P(a | b)P(b) + P(a | ¬b)P(¬b)`. This is a similar idea to marginalization. The probability of event a occurring is equal to the probability of a given b times the probability of b, plus the probability of a given ¬b time the probability of ¬b.
+
+![conditioning](https://github.com/user-attachments/assets/06558513-0b7a-47d6-87a1-6868ccde68f2)
+
+  * In this formula, the X takes the value xᵢ with probability that == sum(probabilities(xᵢ))  given each value of the random variable Y multiplied by the probability of variable Y taking that value. This makes sense if we remember that P(a | b) = P(a, b)/P(b). If we multiply this expression by P(b), we end up with P(a, b), and from here we do the same as we did with marginalization.
+
+  
+    EX::
+    - P(a) = P(a | b)P(b) + P(a | ¬b)P(¬b).
+    
+    + Scenario:
+        Imagine you have a bag with two types of balls: red and blue. The bag is divided into two compartments:
+
+              Compartment 1: Contains 70% red balls and 30% blue balls.
+              Compartment 2: Contains 20% red balls and 80% blue balls.
+
+        You choose a compartment at random, and then draw a ball from that compartment. Let's calculate the probability of drawing a red ball.
+
+        Define Events:
+             AA: Drawing a red ball.
+             BB: Choosing Compartment 1.
+             ¬B¬B: Choosing Compartment 2.
+
+      *  Probabilities:
+            P(B)=0.5P(B)=0.5  `(The probability of choosing Compartment 1).`
+
+            P(¬B)=0.5P(¬B)=0.5  `(The probability of choosing Compartment 2).`
+
+            P(A∣B)=0.7P(A∣B)=0.7  `(The probability of drawing a red ball given that Compartment 1 is chosen).`
+            
+            P(A∣¬B)=0.2P(A∣¬B)=0.2  `(The probability of drawing a red ball given that Compartment 2 is chosen).`
+
+       - Apply the Law of Total Probability:
+                P(A)=P(A∣B)P(B)+P(A∣¬B)P(¬B)
+              
+                Substituting the values:
+                    P(A)=(0.7×0.5)+(0.2×0.5)
+                  
+                    P(A)=0.35+0.1=0.  45
+
+            
+        * So, the probability of drawing a red ball from the bag is 0.450.45 or 45%.
+
+
+###### to study Bayesean Network and Markov model write codes no need of Notes
