@@ -8,8 +8,8 @@
 
    * Local search is a search algorithm `that maintains a single node and searches by moving to a neighboring node`.   
    if we wanted to find the quickest way to the goal, local search is interested in finding the best answer to a question. Often, local search will bring to an `answer that is not optimal but “good enough,”` conserving computational power. 
-
-img__house_image-here__----~~~~~
+   
+![hospitals1](https://github.com/user-attachments/assets/8b27d60c-da06-4e88-ade0-fc9383901b35)
 
    * In this illustration, we are seeing a possible configuration of houses and hospitals. The distance between them is measured using Manhattan distance
    ...and the sum of the distances from each house to the nearest hospital is 17. 
@@ -17,7 +17,8 @@ img__house_image-here__----~~~~~
 
    * :Abstracting this concept, we can represent each configuration of houses and hospitals as the state-space landscape below. Each of the bars in the picture represents a value of a state, which in our example would be the cost of a certain configuration of houses and hospitals.
 
-___landscape img here
+![statespace](https://github.com/user-attachments/assets/11aebf8b-557c-407e-8143-3f256e270e86)
+
 
    * Going off of this visualization, we can define a few important terms for the rest of our discussion:
       
@@ -52,8 +53,7 @@ ___landscape img here
 
    * A hill climbing algorithm can get `stuck in local maxima or minima`. A local maximum (plural: maxima) is a state that has a higher value than its neighboring states. As opposed to that, a global maximum is a state that has the highest value of all states in the state-space.
 
-      [[ more Images would be on online 
-      -local minima/maxima-  ]]
+![objectfuntion](https://github.com/user-attachments/assets/55b3b67d-ef41-4267-9087-bfd2ae0b1dff)
 
 
 #### Hill Climbing Variants.
@@ -77,6 +77,7 @@ ___landscape img here
   
   * The following is pseudocode for simulated annealing:
 
+    _______________________________________________________
       - function Simulated-Annealing(problem, max):
             current = initial state of problem
             for t = 1 to max:
@@ -87,4 +88,5 @@ ___landscape img here
                      current = neighbor
                with probability e^(ΔE/T) set current = neighbor
             return current
+    _______________________________________________________
 
