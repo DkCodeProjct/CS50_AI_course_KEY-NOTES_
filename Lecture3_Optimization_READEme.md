@@ -78,7 +78,7 @@
   * The following is pseudocode for simulated annealing:
 
     _______________________________________________________
-      - function Simulated-Annealing(problem, max):
+      function Simulated-Annealing(problem, max):
             current = initial state of problem
             for t = 1 to max:
                T = Temperature(t)
@@ -89,4 +89,88 @@
                with probability e^(ΔE/T) set current = neighbor
             return current
     _______________________________________________________
+
+   * algorithm  inputs: `problem and max`, the number of times it should repeat itself. For each iteration, T i`s set using a Temperature function`.  `when t is low: returns a higher value` and when `t is high: lower value in later iterations`. Then, a random neighbor is selected,
+   
+   * ΔE is  how `better the neighbor state is than the current state`. 
+   
+   * If the neighbor state is better than the current state (ΔE > 0), as before, we set our current state to be the neighbor state. 
+   
+   * However, when the neighbor state is worse (ΔE < 0), we still might set our current state to be that neighbor state, and we do so with probability `e^(ΔE/T)`. 
+   
+   * the  more `negative ΔE` will result in `lower probability of the neighbor state being chosen`, and  `higher the temperature T `the higher  probability that the neighbor state will be chosen. 
+   
+   * The math behind this is as follows: e is a constant (around 2.72), and ΔE is negative (since this neighbor is worse than the current state). The more negative ΔE, the closer the resulting value to 0. The higher the temperature T is, the closer ΔE/T is to 0, making the probability closer to 1.
+
+
+### Traveling Salesman Problem
+
+   * In the traveling salesman problem, the task is to connect all points while choosing the shortest possible distance. This is, for example, what delivery companies need to do: find the shortest route from the store to all the customers’ houses and back.
+
+img tsp -------
+
+   * In this case, a neighbor state might be seen as a state where two arrows swap places. Calculating every possible combination makes this problem computationally demanding (having just 10 points gives us 10!, or 3,628,800 possible routes). By using the simulated annealing algorithm, a good solution can be found for a lower computational cost.
+
+
+# Linear Programming
+
+   * Linear programming is a `family of problems that optimize a linear equation `(an equation of the form y = ax₁ + bx₂ + …).
+
+   * Linear programming will have the following components:
+
+         + A `cost function` that we want t`o minimize: c₁x₁ + c₂x₂ + … + cₙxₙ. Here, each x₋ is a variable and it is associated with some cost c₋.`
+         
+         + A `constraint` that’s represented as a `sum of variables that is either less than or equal to a value (a₁x₁ + a₂x₂ + … + aₙxₙ ≤ b)` or precisely `equal to this value (a₁x₁ + a₂x₂ + … + aₙxₙ = b).` In this case, x₋ is a variable, and a₋ is some resource associated with it, and b is how much resources we can dedicate to this problem.
+         
+         + Individual` bounds on variables` (for example, t`hat a variable can’t be negative) of the form lᵢ ≤ xᵢ ≤ uᵢ.`
+
+   * Consider the following example:
+
+         + Two machines,` X₁ and X₂. X₁ costs $50/hour to run, X₂ costs $80/hour` to run. The goal is to minimize cost. This can be formalized as a cost function: `50x₁ + 80x₂.`
+
+         + X₁ `requires 5 units of labor per hour. X₂ requires 2 units of labor` per hour. 
+         
+         + Total of 20 units of labor to spend. This can be formalized as a constraint: 5x₁ + 2x₂ ≤ 20.
+
+         + X₁ produces 10 units of output per hour. X₂ produces 12 units of output per hour. Company needs 90 units of output. This is another constraint. Literally, it can be rewritten as` 10x₁ + 12x₂ ≥ 90`. However, constraints need to be of the form `(a₁x₁ + a₂x₂ + … + aₙxₙ ≤ b)` or `(a₁x₁ + a₂x₂ + … + aₙxₙ = b)`. Therefore, we multiply `by (-1) to get to an equivalent equation of the desired form: (-10x₁) + (-12x₂) ≤ -90`.
+
+            ----------------------------------------------------------------
+
+               import scipy.optimize
+
+
+               // Objective Function: 50x_1 + 80x_2
+               // Constraint 1: 5x_1 + 2x_2 <= 20
+               // Constraint 2: -10x_1 + -12x_2 <= -90
+
+               output = scipy.optimize.linprog(
+                     [50, 80],  # Cost function: 50x_1 + 80x_2
+                     AupperBoud = [[5, 2], [-10, -12]], # Coefficients for inequalities
+                     BupperBound = [20, 90]  # Constraints for inequalities: 20 and -90
+               )
+
+               if output.success:
+                  print(f'X1: {round(output.x[0], 2)} hours')
+                  print(f'X1: {round(output.x[1], 2)} hours')
+               else:
+                  print('no solution')
+
+            ----------------------------------------------------------------
+
+
+## Constraint Satisfaction
+
+   * Constraint Satisfaction problems are a `class of problems where variables need to be assigned values while satisfying some conditions`.
+
+   * Constraints satisfaction problems have the following properties:
+
+         + Set of variables` (x₁, x₂, …, xₙ)`
+         + Set of domains for each variable` {D₁, D₂, …, Dₙ}`
+         + Set of constraints `C`
+
+   * `Sudoku` can be represented as a constraint satisfaction problem, `where each empty square is a variable`, the domain is the numbers 1-9, and the `constraints are the squares that can’t be equal to each other`.
+
+   
+
+
 
