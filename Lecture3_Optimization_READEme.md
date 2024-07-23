@@ -76,9 +76,9 @@
   * Annealing is the process of` heating metal and allowing it to cool slowly`,. This is used as a metaphor for the simulated annealing algorithm, which starts with a high temperature, being more likely to make random decisions, and, as the temperature decreases, it becomes less likely to make random decisions, becoming more “firm.” This mechanism` allows the algorithm to change its state to a neighbor that’s worse than the current state, which is how it can escape from local maxima`.
   
   * The following is pseudocode for simulated annealing:
+_______________________________________________________
 
-    _______________________________________________________
-      function Simulated-Annealing(problem, max):
+    function Simulated-Annealing(problem, max):
             current = initial state of problem
             for t = 1 to max:
                T = Temperature(t)
@@ -88,7 +88,7 @@
                      current = neighbor
                with probability e^(ΔE/T) set current = neighbor
             return current
-    _______________________________________________________
+  _______________________________________________________
 
    * algorithm  inputs: `problem and max`, the number of times it should repeat itself. For each iteration, T i`s set using a Temperature function`.  `when t is low: returns a higher value` and when `t is high: lower value in later iterations`. Then, a random neighbor is selected,
    
