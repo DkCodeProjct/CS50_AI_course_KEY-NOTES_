@@ -171,6 +171,79 @@ img tsp -------
    * `Sudoku` can be represented as a constraint satisfaction problem, `where each empty square is a variable`, the domain is the numbers 1-9, and the `constraints are the squares that can’t be equal to each other`.
 
    
+   * Consider another example. `Each of students 1-4 is taking three courses from A, B, …, G. Each course needs to have an exam`, and the possible days for exams are Monday, Tuesday, and Wednesday. However, `the same student can’t have two exams on the same day. In this case, the variables are the courses,` the domain is the days, and `the !
+constraints are which courses can’t be scheduled to have an exam on the same day because the same student is taking them.` This can be visualized as follows:
+
+[constraintsatisfaction1](https://github.com/user-attachments/assets/15b76847-7b53-4f2b-ad10-534b0096a125)
+
+
+   * This problem can be solved using constraints that are represented as a graph. Each node on the graph is a course, and an edge is drawn between two courses if they can’t be scheduled on the same day. In this case, the graph will look this:
+
+
+![constraintsatisfaction2](https://github.com/user-attachments/assets/2231db55-828e-43ba-9d48-ae876f1e20e9)
+
+
+   * A few more terms worth knowing about constraint satisfaction problems:
+
+    1. A Hard Constraint is a constraint that must be satisfied in a correct solution.
+    
+    2. A Soft Constraint is a constraint that expresses which solution is preferred over others.
+    
+    3. A Unary Constraint is a constraint that involves only one variable. In our example, a unary constraint would be saying that course A can’t have an exam on Monday {A ≠ Monday}.
+    
+    4. A Binary Constraint is a constraint that involves two variables. This is the type of constraint that we used in the example above, saying that some two courses can’t have the same value {A ≠ B}.
+
+
+# Node Consistency
+
+   * Node consistency is when all the `values in a variable’s domain satisfy the variable’s unary constraints.`
+
+      : **For example,:
+          let’s take two courses, A and B. The domain for each course is {Monday, Tuesday, Wednesday}, and the constraints are `{A ≠ Mon, B ≠ Tue, B ≠ Mon, A ≠ B}.` Now, neither A nor B is consistent, because the existing constraints prevent them from being able to take every value that’s in their domain. However, `if we remove Monday from A’s domain, then it will have node consistency.` To achieve node consistency in B, we will have to remove both Monday and Tuesday from its domain.
+
+# Arc Consistency
+
+   * Arc consistency is when all the v`alues in a variable’s domain satisfy the variable’s binary constraints (note that we are now using “arc” to refer to what we previously referred to as “edge”).` In other words, to make `X arc-consistent with respect to Y,` remove elements from X’s domain until every choice for X has a possible choice for Y.
+
+
+-----------------------------------
+            
+            
+            function Revise(csp, X, Y):
+
+               revised = false
+               for x in X.domain:
+                  if no y in Y.domain satisfies constraint for (X,Y):
+                        delete x from X.domain
+                        revised = true
+               return revised
+
+
+-----------------------------------
+
+   *  This algorithm starts with tracking whether any change was made to X’s domain, using the variable revised. Then, the code repeats for every value in X’s domain and sees if Y has a value that satisfies the constraints. If yes, then do nothing, if not, remove this value from X’s domain.
+
+   * Often we are interested in making the whole problem arc-consistent and not just one variable with respect to another. In this case, we will use an algorithm called 
+   
+   `AC-3, which uses Revise:`
+
+-----------------------------------
+         function AC-3(csp):
+
+         queue = all arcs in csp
+         while queue non-empty:
+            (X, Y) = Dequeue(queue)
+            if Revise(csp, X, Y):
+                  if size of X.domain == 0:
+                     return false
+                  for each Z in X.neighbors - {Y}:
+                     Enqueue(queue, (Z,X))
+         return true
+
+-----------------------------------
+
+
+
 
 
 
