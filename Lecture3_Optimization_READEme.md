@@ -221,6 +221,11 @@ constraints are which courses can’t be scheduled to have an exam on the same d
 
 -----------------------------------
 
+
+* This algorithm, known as AC-3 (Arc Consistency 3), ensures that all arcs in a constraint satisfaction problem are consistent by repeatedly applying the Revise algorithm. It checks if values in the domain of variable X can be paired with values in the domain of variable Y according to the constraints. 
+  
+* If X's domain is revised (changed), it rechecks consistency with X's neighbors. The algorithm simplifies the problem by ensuring arc consistency but may not fully solve it, especially in problems with complex, interconnected constraints.
+
    *  This algorithm starts with tracking whether any change was made to X’s domain, using the variable revised. Then, the code repeats for every value in X’s domain and sees if Y has a value that satisfies the constraints. If yes, then do nothing, if not, remove this value from X’s domain.
 
    * Often we are interested in making the whole problem arc-consistent and not just one variable with respect to another. In this case, we will use an algorithm called 
